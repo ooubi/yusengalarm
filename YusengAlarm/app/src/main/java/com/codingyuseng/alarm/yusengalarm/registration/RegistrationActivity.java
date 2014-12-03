@@ -1,4 +1,4 @@
-package com.codingyuseng.alarm.yusengalarm.edit;
+package com.codingyuseng.alarm.yusengalarm.registration;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,12 +8,12 @@ import android.view.MenuItem;
 import com.codingyuseng.alarm.yusengalarm.R;
 
 //TODO
-public class EditActivity extends Activity {
+public class RegistrationActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit);
+        setContentView(R.layout.activity_registration);
     }
 
 

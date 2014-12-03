@@ -4,8 +4,8 @@ import android.app.IntentService;
 import android.content.Intent;
 
 //TODO
-public class TimerService extends IntentService {
-public TimerService() {
+public class RegisterAlarmService extends IntentService {
+public RegisterAlarmService() {
         super("TimerService");
     }
 

@@ -12,10 +12,9 @@
             android:label="@string/title_activity_main" >
         </activity>
         <activity
-            android:name="com.codingyuseng.alarm.yusengalarm.edit.EditActivity"
+            android:name="com.codingyuseng.alarm.yusengalarm.registration.RegistrationActivity"
             android:label="@string/title_activity_edit" >
         </activity>
-
         <activity
             android:name="com.codingyuseng.alarm.yusengalarm.alarms.arcade.AlarmArcadeMainActivity"
             android:label="@string/title_activity_alarm_arcade_main" >
@@ -45,12 +44,12 @@
             android:label="@string/title_activity_alarm_shake_main" >
         </activity>
         <activity
-            android:name=".alarms.social.AlarmSocialMainActivity"
+            android:name="com.codingyuseng.alarm.yusengalarm.alarms.social.AlarmSocialMainActivity"
             android:label="@string/title_activity_alarm_social_main_activitu" >
         </activity>
 
         <service
-            android:name="com.codingyuseng.alarm.yusengalarm.common.service.TimerService"
+            android:name="com.codingyuseng.alarm.yusengalarm.common.service.RegisterAlarmService"
             android:exported="false" >
         </service>
         <service
@@ -60,6 +59,11 @@
 
         <receiver
             android:name="com.codingyuseng.alarm.yusengalarm.common.receiver.BootCompletedReceiver"
+            android:enabled="true"
+            android:exported="true" >
+        </receiver>
+        <receiver
+            android:name="com.codingyuseng.alarm.yusengalarm.common.receiver.StartAlarmReceiver"
             android:enabled="true"
             android:exported="true" >
         </receiver>
