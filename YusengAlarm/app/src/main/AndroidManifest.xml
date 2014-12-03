@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.codingyuseng.alarm.yusengalarm" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.codingyuseng.alarm.yusengalarm.main.MainActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
+        <activity
+            android:name="com.codingyuseng.alarm.yusengalarm.edit.EditActivity"
+            android:label="@string/title_activity_edit" >
+        </activity>
+
+        <activity
+            android:name="com.codingyuseng.alarm.yusengalarm.alarms.arcade.AlarmArcadeMainActivity"
+            android:label="@string/title_activity_alarm_arcade_main" >
+        </activity>
+        <activity
+            android:name="com.codingyuseng.alarm.yusengalarm.alarms.fivemeter.AlarmFivemeterMainActivity"
+            android:label="@string/title_activity_alarm_fivemeter_main" >
+        </activity>
+        <activity
+            android:name="com.codingyuseng.alarm.yusengalarm.alarms.math.AlarmMathMainActivity"
+            android:label="@string/title_activity_alarm_math_main" >
+        </activity>
+        <activity
+            android:name="com.codingyuseng.alarm.yusengalarm.alarms.mosquito.AlarmMosquitoMainActivity"
+            android:label="@string/title_activity_alarm_mosquito_main" >
+        </activity>
+        <activity
+            android:name="com.codingyuseng.alarm.yusengalarm.alarms.ordinary.AlarmOrdinaryMainActivity"
+            android:label="@string/title_activity_alarm_ordinary_main" >
+        </activity>
+        <activity
+            android:name="com.codingyuseng.alarm.yusengalarm.alarms.pattern.AlarmPatternMainActivity"
+            android:label="@string/title_activity_alarm_pattern_main" >
+        </activity>
+        <activity
+            android:name="com.codingyuseng.alarm.yusengalarm.alarms.shake.AlarmShakeMainActivity"
+            android:label="@string/title_activity_alarm_shake_main" >
+        </activity>
+        <activity
+            android:name=".alarms.social.AlarmSocialMainActivity"
+            android:label="@string/title_activity_alarm_social_main_activitu" >
+        </activity>
+
+        <service
+            android:name="com.codingyuseng.alarm.yusengalarm.common.service.TimerService"
+            android:exported="false" >
+        </service>
+        <service
+            android:name="com.codingyuseng.alarm.yusengalarm.common.service.StartAlarmService"
+            android:exported="false" >
+        </service>
+
+        <receiver
+            android:name="com.codingyuseng.alarm.yusengalarm.common.receiver.BootCompletedReceiver"
+            android:enabled="true"
+            android:exported="true" >
+        </receiver>
+    </application>
+
+</manifest>
