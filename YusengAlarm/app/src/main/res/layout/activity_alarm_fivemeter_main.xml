@@ -7,6 +7,16 @@
     tools:context="com.codingyuseng.alarm.yusengalarm.alarms.fivemeter.AlarmFivemeterMainActivity">
 
     <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/fivemeter_status" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 M"
+        android:id="@+id/fivemeter_alarm_switch"
+        android:layout_below="@+id/fivemeter_status"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

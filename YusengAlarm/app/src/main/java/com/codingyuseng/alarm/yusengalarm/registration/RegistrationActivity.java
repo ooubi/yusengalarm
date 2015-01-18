@@ -7,7 +7,6 @@ import android.view.MenuItem;
 
 import com.codingyuseng.alarm.yusengalarm.R;
 
-//TODO
 public class RegistrationActivity extends Activity {
 
     @Override
