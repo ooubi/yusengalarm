@@ -15,9 +15,12 @@ import android.widget.TextView;
 
 import com.codingyuseng.alarm.yusengalarm.R;
 
-//implement step counter alarm, for 4.4 android
+
 public class AlarmFivemeterMainActivity extends Activity implements SensorEventListener {
-    private MovementHandler mMovementHandler;
+    private static final String MODE_LYING_TEXT = "Wake up!";
+    private static final String MODE_WALKING_TEXT = "Let's stroll little";
+    private static final String MODE_AWAKENED_TEXT = "Nice";
+    private MovementCalculator mMovementCalculator;
     private SensorManager mSensorManager;
     private Sensor mAcceleration;
     private TextView mStatusTextView;
@@ -32,7 +35,7 @@ public class AlarmFivemeterMainActivity extends Activity implements SensorEventL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_fivemeter_main);
 
-        mMovementHandler = new MovementHandler();
+        mMovementCalculator = new MovementCalculator();
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAcceleration = mSensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
 
@@ -52,8 +55,8 @@ public class AlarmFivemeterMainActivity extends Activity implements SensorEventL
     @Override
     protected void onResume() {
         super.onResume();
-        mSensorManager.registerListener(this, mAcceleration, SensorManager.SENSOR_DELAY_FASTEST);
-        mMovementHandler.reset();
+        mSensorManager.registerListener(this, mAcceleration, SensorManager.SENSOR_DELAY_UI);
+        mMovementCalculator.reset();
     }
 
     @Override
@@ -67,14 +70,15 @@ public class AlarmFivemeterMainActivity extends Activity implements SensorEventL
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        mMovementHandler.updateMovement(event.values[0], event.values[1]);
+        mMovementCalculator.updateMovement(event.values);
         if (mMode.equals(Mode.LYING)
-                && mMovementHandler.isDisplacementPass()) {
+                && mMovementCalculator.isDisplacementPass()) {
+            mMovementCalculator.reset();
             changeStatusToWalking();
         }
         if (mMode.equals(Mode.WALKING)) {
-            mAlarmSwitchButton.setText(mMovementHandler.getDistance() + " M");
-            if (mMovementHandler.isDistancePass()) {
+            mAlarmSwitchButton.setText(mMovementCalculator.getDistance() + " M");
+            if (mMovementCalculator.isDistancePass()) {
                 changeStatusToAwakened();
             }
         }
@@ -99,18 +103,22 @@ public class AlarmFivemeterMainActivity extends Activity implements SensorEventL
 
     private void changeModeToLying() {
         mMode = Mode.LYING;
-        mAlarmSwitchButton.setEnabled(false);
+        mStatusTextView.setText(MODE_LYING_TEXT);
+        mAlarmSwitchButton.setActivated(false);
         mAlarmSwitchButton.setBackgroundColor(Color.GRAY);
     }
 
     private void changeStatusToWalking() {
         mMode = Mode.WALKING;
-        mAlarmSwitchButton.setEnabled(true);
+        mStatusTextView.setText(MODE_WALKING_TEXT);
+        mAlarmSwitchButton.setActivated(true);
         mAlarmSwitchButton.setBackgroundColor(Color.RED);
     }
 
     private void changeStatusToAwakened() {
         mMode = Mode.AWAKENED;
+        mStatusTextView.setText(MODE_AWAKENED_TEXT);
+        mAlarmSwitchButton.setText(MovementCalculator.DISTANCE_PASS_METER + " M");
         mAlarmSwitchButton.setBackgroundColor(Color.GREEN);
     }
 }
